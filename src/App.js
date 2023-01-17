@@ -5,6 +5,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 
@@ -37,17 +39,19 @@ function App() {
 
   const handleTimestamp = (timestamp) => {
     const date = new Date(parseInt(timestamp))
-    const dateFormat = date.getHours() + ":" + date.getMinutes() + ", "+ date.toDateString();
+    const dateFormat = date.getHours() + ":" + (date.getMinutes()<10?'0':'') + date.getMinutes() + ", "+ date.toDateString();
     return dateFormat
   }
 
   return (
     <div className="App">
+      <Container size="sm">
+      <Box>Meme Generator</Box>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Image</InputLabel>
+        <InputLabel id="select-label">Image</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          labelId="select-label"
+          id="select"
           value={selectedImgId}
           label="Image"
           onChange={(e)=>{setSelectedImgId(e.target.value)}}
@@ -58,8 +62,9 @@ function App() {
         <TextField id="outlined-basic" label="Text 2" variant="outlined" value={text2} onChange={(e)=>{setText2(e.target.value)}}/>
         <Button variant="contained" type="submit" onClick={handleSubmit}>Generate Meme</Button>
       </FormControl>
-      {result && <img src={result} alt="Personalized Meme"/>}
-      {pastMemes && pastMemes.map((meme)=>{return <div><img src={meme.url}/>{handleTimestamp(meme.creation_date)}</div>})}
+      {result && <img className="result" src={result} alt="Personalized Meme"/>}
+      {pastMemes && pastMemes.map((meme)=>{return <div className="historic"><img src={meme.url} key={meme.url} alt={meme.url}/>{handleTimestamp(meme.creation_date)}</div>})}
+      </Container>
     </div>
   );
 }
