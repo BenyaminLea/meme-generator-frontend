@@ -1,10 +1,16 @@
 .App {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 1rem;
+}
+
+.MuiContainer-root {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
 }
 
 .MuiBox-root {
-  background-color: #1976d2;
+  background-color: rgb(199, 20, 196);
   border-radius: 4px;
   color: white;
   font-weight: bold;
@@ -15,15 +21,17 @@
   padding: 6px 16px;
 }
 
+.MuiDivider-root {
+  width: 100%;
+  margin : 0.5rem !important;
+}
+
 img {
-  height : 100px;
+  height : 6rem;
   width : auto;
+  margin : 0.5rem;
 }
 
-.MuiInputBase-root {
-  margin-bottom: 0.5rem;
-}
-
-.result, .historic {
+.result, .history {
   margin: 0.5rem;
 }

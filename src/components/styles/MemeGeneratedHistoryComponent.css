@@ -1,0 +1,11 @@
+.history {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.historyElem {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
